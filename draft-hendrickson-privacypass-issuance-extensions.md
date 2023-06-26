@@ -3,7 +3,7 @@ title: "Privacy Pass Issuance Protocol Extensions"
 abbrev: "Privacy Pass Issuance Protocol Extensions"
 category: std
 
-docname: draft-hendrickson-privacypass-token-extensions-latest
+docname: draft-hendrickson-privacypass-issuance-extensions-latest
 submissiontype: IETF
 number:
 date:
