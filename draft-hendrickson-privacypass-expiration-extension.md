@@ -1,9 +1,9 @@
 ---
-title: "Privacy Pass Issuance Protocol Extensions"
-abbrev: "Privacy Pass Issuance Protocol Extensions"
+title: "Privacy Pass Token Expiration Extension"
+abbrev: "Privacy Pass Token Expiration Extension"
 category: std
 
-docname: draft-hendrickson-privacypass-issuance-extensions-latest
+docname: draft-hendrickson-privacypass-expiration-extension-latest
 submissiontype: IETF
 number:
 date:
@@ -41,9 +41,8 @@ normative:
 
 --- abstract
 
-This document describes several extensions for Privacy Pass issuance
-protocols, including one for token expiration and one for geolocation
-information.
+This document describes an extension for Privacy Pass that allows tokens
+to encode expiration information.
 
 --- middle
 
@@ -57,9 +56,9 @@ variants of the basic Privacy Pass issuance protocols {{BASIC-ISSUANCE}} that
 support issuing tokens with public metadata. However, there are no existing
 extensions defined to make use of these protocol extensions.
 
-This document defines several extensions for Privacy Pass token types with public metadata,
-including one for token expiration and one for geolocation. The use case and deployment
-considerations, especially with respect to the resulting privacy loss, are also discussed.
+This document describes an extension for Privacy Pass that allows tokens
+to encode expiration information. The use case and deployment considerations,
+especially with respect to the resulting privacy impact, are also discussed.
 
 # Conventions and Definitions
 
@@ -121,7 +120,7 @@ possible impact on client privacy can be found in {{ARCHITECTURE}}.
 
 # IANA Considerations
 
-This document registers the following entries into the "Privacy Pass PrivateToken Extensions" registry.
+This document registers the following entry into the "Privacy Pass PrivateToken Extensions" registry.
 
 - Expiration extension
    - Type: 0x0001
@@ -129,7 +128,6 @@ This document registers the following entries into the "Privacy Pass PrivateToke
    - Value: ExpirationTimestamp value as defined in {{expiration-extension}}
    - Reference: This document
    - Notes: Any notes associated with the entry
-
 
 --- back
 
