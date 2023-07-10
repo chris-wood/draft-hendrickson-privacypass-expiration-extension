@@ -17,7 +17,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-hendrickson-privacypass-token-extensions.xml
+draft-hendrickson-privacypass-expiration-extension.xml
 package-lock.json
 report.xml
 !requirements.txt

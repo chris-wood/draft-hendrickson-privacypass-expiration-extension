@@ -1,17 +1,17 @@
-# Privacy Pass Issuance Protocol Extensions
+# Privacy Pass Token Expiration Extension
 
-This is the working area for the individual Internet-Draft, "Privacy Pass Issuance Protocol Extensions".
+This is the working area for the individual Internet-Draft, "Privacy Pass Token Expiration Extension".
 
-* [Editor's Copy](https://chris-wood.github.io/draft-hendrickson-privacypass-token-extensions/#go.draft-hendrickson-privacypass-token-extensions.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-hendrickson-privacypass-token-extensions)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-hendrickson-privacypass-token-extensions)
-* [Compare Editor's Copy to Individual Draft](https://chris-wood.github.io/draft-hendrickson-privacypass-token-extensions/#go.draft-hendrickson-privacypass-token-extensions.diff)
+* [Editor's Copy](https://chris-wood.github.io/draft-hendrickson-privacypass-expiration-extension/#go.draft-hendrickson-privacypass-expiration-extension.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-hendrickson-privacypass-expiration-extension)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-hendrickson-privacypass-expiration-extension)
+* [Compare Editor's Copy to Individual Draft](https://chris-wood.github.io/draft-hendrickson-privacypass-expiration-extension/#go.draft-hendrickson-privacypass-expiration-extension.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/chris-wood/draft-hendrickson-privacypass-token-extensions/blob//CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/chris-wood/draft-hendrickson-privacypass-expiration-extension/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
