@@ -127,7 +127,7 @@ This document registers the following entry into the "Privacy Pass PrivateToken 
    - Name: Expiration
    - Value: ExpirationTimestamp value as defined in {{expiration-extension}}
    - Reference: This document
-   - Notes: Any notes associated with the entry
+   - Notes: None
 
 --- back
 
