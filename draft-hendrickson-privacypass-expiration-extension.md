@@ -114,10 +114,9 @@ as defined in {{Section 3.2 of ARCHITECTURE}}. Mitigating risk of privacy violat
 that the extension be constructed in a way that does not induce anonymity set partitioning,
 as described in {{Section 6.1 of ARCHITECTURE}}.
 
-The best way to achieve this in practice is for all Clients to consistently use the same
-information in the extension. Consistency can be achieved in a variety of ways. For example,
+The best way to achieve this in practice is for Clients to use the same limited sets of information in the extension. Consistency can be achieved in a variety of ways. For example,
 Client implementations might insist that all Clients use the same deterministic function for
-computing the expiration timestamp, e.g., some function F(current time). Presumably, this
+computing the expiration timestamp, e.g., some function F(current time). This
 function would round the current timestamp, resulting in a loss of precision but overall
 less unique value. One way to implement this function would by rounding the timestamp
 to the nearest hour, day, or week. Of course, this does not account for clock skew,
