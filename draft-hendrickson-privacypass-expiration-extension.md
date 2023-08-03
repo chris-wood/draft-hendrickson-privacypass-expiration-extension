@@ -18,8 +18,7 @@ venue:
   group: "Privacy Pass"
   type: "Working Group"
   mail: "privacy-pass@ietf.org"
-  github: "chris-wood/draft-hendrickson-privacypass-token-extensions"
-  latest: "https://chris-wood.github.io/draft-hendrickson-privacypass-token-extensions/draft-hendrickson-privacypass-token-extensions.html"
+  github: "chris-wood/draft-hendrickson-privacypass-expiration-extension"
 
 author:
  -
@@ -37,6 +36,7 @@ normative:
    EXTENDED-ISSUANCE: I-D.hendrickson-privacypass-public-metadata-issuance
    BASIC-ISSUANCE: I-D.ietf-privacypass-protocol
    ARCHITECTURE: I-D.ietf-privacypass-architecture
+   CONSISTENCY: I-D.ietf-privacypass-key-consistency
 
 
 --- abstract
@@ -71,17 +71,11 @@ token. It is useful for Privacy Pass deployments that make use of cached tokens,
 those that are not bound to a specific TokenChallenge redemption context, without having
 to frequently rotate issuing public keys.
 
-For example, consider a Privacy Pass deployment wherein clients use cached tokens that
-are valid for one hour. Clients could pre-fetch these tokens each hour and the issuer
-and origin could rotate the verification key every hour to force expiration. Alternatively,
-clients could pre-fetch tokens for the entire day all at once, including an expiration
+For example, consider a Privacy Pass deployment wherein Clients use cached tokens that
+are valid for one hour. Clients could pre-fetch these tokens each hour and the Issuer
+and Origin could rotate the verification key every hour to force expiration. Alternatively,
+Clients could pre-fetch tokens for the entire day all at once, including an expiration
 timestamp in each token to indicate the time window for which the token is valid.
-
-Including a specific expiration timestamp could reveal specific information about a client,
-if, say, a client has a uniquely skewed clock. For that reason, clients can round the timestamp,
-resulting in a loss of precision but overall less unique value. Clients do this by choosing an
-expiration timestamp and the precision they would like, e.g., the UNIX time of expiration rounded
-to the nearest hour, day, or week.
 
 The value of this extension is an ExpirationTimestamp, defined as follows.
 
@@ -111,12 +105,54 @@ struct {
 } ExpirationTimestmap;
 ~~~
 
+# Privacy Considerations {#privacy}
+
+This extension intentionally adds more information to a token that might not otherwise be
+visibile to Attester, Issuer, or Origin. As such, how this information is chosen can have
+an impact on Origin-Client, Issuer-Client, Attester-Origin, or redemption context unlinkability
+as defined in {{Section 3.2 of ARCHITECTURE}}. Mitigating risk of privacy violation requires
+that the extension be constructed in a way that does not induce anonymity set partitioning,
+as described in {{Section 6.1 of ARCHITECTURE}}.
+
+The best way to achieve this in practice is for Clients to use the same limited sets of information
+in the extension. Consistency can be achieved in a variety of ways. For example,
+Client implementations might insist that all Clients use the same deterministic function for
+computing the expiration timestamp, e.g., some function F(current time). This
+function would round the current timestamp, resulting in a loss of precision but overall
+less unique value. One way to implement this function would by rounding the timestamp
+to the nearest hour, day, or week. Of course, this does not account for clock skew,
+which occurs with some non-neglgiible probability in practice {{?CLOCK-SKEW=DOI.10.1145/3133956.3134007}}.
+
+An alternative implementation strategy for consistency is to run some sort of consistency
+check to ensure that the Client uses a value that is consistent with other Clients. Several
+consistency mechanisms exist; see {{CONSISTENCY}} for more information. Such an explicit
+consistency check would depend less upon the Client's current clock and thus be more robust
+at the cost of additional work.
+
+Orthogonal to the mechanism used to ensure consistency, it is also important that Clients
+choose expiration timestamps that are shared by other Clients. Consider, for example, a
+scenario where two Clients consistently choose expiration timestamps per the recommendation
+above, but only one Client ever requests a token within a given expiration window. Despite
+the consistency check in place, the actual value of the timestamp is still unique to one of
+the Clients.
+
+The means by which implementations ensure that some minimum number of Clients share the same
+expiration timestamp is a deployment-specific challenge. For example, in the Split Origin,
+Attester, and Issuer deployments as described in {{Section 4.4 of ARCHITECTURE}}, the Attester
+is positioned to ensure that Clients do not choose consistent yet unique values. General purpose
+approaches to ensure that some minimum number of Clients share the same expiration timestamp
+are outside the scope of this document; indeed, this problem is not unique to Privacy Pass and
+is common to other privacy-related protocols such as Oblivious HTTP {{?OHTTP=I-D.ietf-ohai-oblivious-http}}.
+
 # Security Considerations
 
-Use of extensions risks revealing additional information to parties that see these extensions, including
-the Attester, Issuer, and Origin. Each extension in this document specifies security and privacy
-considerations relevant to its use. More general information regarding the use of extensions and their
-possible impact on client privacy can be found in {{ARCHITECTURE}}.
+Use of the expiration extension risks revealing additional information to parties that see the
+extension, including the Attester, Issuer, and Origin. {{privacy}} discusses specific privacy
+implications for use of this extension that aim to mitigate exposure of information that can
+unintentionally partition the Client anonymity set and lead to Origin-Client, Issuer-Client,
+Attester-Origin, or redemption context unlinkability as defined in {{Section 3.2 of ARCHITECTURE}}.
+General information regarding the use of extensions and their possible impact on Client privacy
+can be found in {{Section 3.4.3 of ARCHITECTURE}} and {{Section 6.1 of ARCHITECTURE}}.
 
 # IANA Considerations
 
