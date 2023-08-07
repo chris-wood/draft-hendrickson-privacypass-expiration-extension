@@ -1,0 +1,190 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2023-08-06T00:14:06.457810+00:00",
+  "repo": "chris-wood/draft-hendrickson-privacypass-expiration-extension",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOJv7my85pzOmJ",
+      "title": "Expiration extension",
+      "url": "https://github.com/chris-wood/draft-hendrickson-privacypass-expiration-extension/issues/1",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The type of this extension is 0x0001. The value of this extension is as follows:\r\n\r\n```\r\nstruct {\r\n   uint64 time_precision; // granularity of the timestamp\r\n   uint64 time; // timestamp at which the token expires, current UNIX time in seconds divided by time_precision\r\n} ExpirationTimestmap;\r\n```",
+      "createdAt": "2023-06-26T15:20:12Z",
+      "updatedAt": "2023-06-26T15:20:12Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOJv7my85pzOtW",
+      "title": "GeoHint extension",
+      "url": "https://github.com/chris-wood/draft-hendrickson-privacypass-expiration-extension/issues/2",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The type of this extension is 0xTODO. The value of this extension is as follows:\r\n\r\n```\r\nstruct {\r\n   opaque geo_hint<0..2^8-1>; // A string like \"US,US-AL,Alabaster\"\r\n} GeoHint;\r\n```\r\n\r\nOr, alternatively, something like:\r\n\r\n```\r\nstruct {\r\n   opaque country<0..2^8-1>; // A string like \"US\"\r\n   opaque region<0..2^8-1>; // A string like \"US-AL\"\r\n   opaque city<0..2^8-1>; // A string like \"Alabaster\"\r\n} Geo;\r\n```",
+      "createdAt": "2023-06-26T15:20:28Z",
+      "updatedAt": "2023-08-04T14:15:57Z",
+      "closedAt": "2023-08-04T14:15:57Z",
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOJv7my85pzO6q",
+      "title": "Attestation verdict extension",
+      "url": "https://github.com/chris-wood/draft-hendrickson-privacypass-expiration-extension/issues/3",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The type of this extension is 0xTODO. The value of this extension is as follows:\r\n\r\n```\r\nstruct {\r\n   uint8 verdict; // A number between 0 and 5 representing the \u201cconfidence\u201d in attestation\r\n} AttestationVerdict;\r\n```",
+      "createdAt": "2023-06-26T15:20:58Z",
+      "updatedAt": "2023-08-04T14:15:58Z",
+      "closedAt": "2023-08-04T14:15:58Z",
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOJv7my85pzPB8",
+      "title": "Attestation label extension",
+      "url": "https://github.com/chris-wood/draft-hendrickson-privacypass-expiration-extension/issues/4",
+      "state": "CLOSED",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The type of this extension is 0xTODO. The value of this extension is as follows:\r\n\r\n```\r\nstruct {\r\n    uint8 label_commitment[64]; \r\n    uint8 attester_label[80];\r\n    uint8 signature[256];\r\n} AttestationLabel;\r\n```\r\n\r\nThe meaning and value of each field is as follows:\r\n\r\n- label_commitment: A commitment to the client label that the attester uses to index into its database of past attestations. The attester will use this to look up device specific information should it need to debug any reported attestation failures from the auditor. The commitment is (r, H(r, l)) for client label l, 32-byte string r, and hash function H. Here, H = SHA-256.\r\n- attester_label: An encryption of the label under the auditor's public key. The actual encoding of this is the concatenation of an HPKE encapsulated key (enc) and HPKE ciphertext (encryption of label l). The HPKE ciphersuite for this encryption is DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, AES-128-GCM. \r\n- signature: A signature over (label_commitment, attester_label) by the attester's signing key. This is used by the issuer to confirm that the attestation label is valid.\r\n",
+      "createdAt": "2023-06-26T15:21:17Z",
+      "updatedAt": "2023-08-04T14:15:58Z",
+      "closedAt": "2023-08-04T14:15:58Z",
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 5,
+      "id": "PR_kwDOJv7my85UvSuJ",
+      "title": "Expiration information",
+      "url": "https://github.com/chris-wood/draft-hendrickson-privacypass-expiration-extension/pull/5",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-07-05T19:57:08Z",
+      "updatedAt": "2023-07-07T20:47:44Z",
+      "baseRepository": "chris-wood/draft-hendrickson-privacypass-expiration-extension",
+      "baseRefName": "main",
+      "baseRefOid": "ed46e3d220f19b9e8fc40d78c557c8064daf040f",
+      "headRepository": "chris-wood/draft-hendrickson-privacypass-expiration-extension",
+      "headRefName": "caw/expiration",
+      "headRefOid": "567f98ff22c72a24095a347583af2371bce93591",
+      "closedAt": "2023-07-07T20:47:44Z",
+      "mergedAt": "2023-07-07T20:47:44Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "3e8431a47113d86930d1e9a073326fafab9b807e"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOJv7my85XJE8H",
+      "title": "Make privacy mitigation strategies more clear",
+      "url": "https://github.com/chris-wood/draft-hendrickson-privacypass-expiration-extension/pull/6",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-08-03T20:12:01Z",
+      "updatedAt": "2023-08-03T23:39:29Z",
+      "baseRepository": "chris-wood/draft-hendrickson-privacypass-expiration-extension",
+      "baseRefName": "main",
+      "baseRefOid": "2644a46265ba6fc714edf869b10829b251763f48",
+      "headRepository": "chris-wood/draft-hendrickson-privacypass-expiration-extension",
+      "headRefName": "caw/privacy-considerations",
+      "headRefOid": "8ea3c1dbf3cdf09be4dc5776b443be0613d374ac",
+      "closedAt": "2023-08-03T23:39:29Z",
+      "mergedAt": "2023-08-03T23:39:29Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "05416a154720edfa5181d061401968be6f50f2b1"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJv7my85dGfgY",
+          "commit": {
+            "abbreviatedOid": "8ea3c1d"
+          },
+          "author": "smhendrickson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM - please see my minor changes before merging",
+          "createdAt": "2023-08-03T23:34:33Z",
+          "updatedAt": "2023-08-03T23:34:33Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
