@@ -92,7 +92,7 @@ The ExpirationTimestmap fields are defined as follows:
   i.e., the target to which the timestamp is rounded for loss of precision.
 
 - "timestamp" is an 8-octet integer, in network byte order, representing the expiration timestamp. The
-  expiration timestamp is the UNIX time in seconds at which a token expires.
+  expiration timestamp is the UNIX time in seconds at which a token expires, expressed in the UTC/GMT timezone ({{!RFC3339, Section 4.1}}).
 
 As an example, an ExpirationTimestamp structure with the following value would be interpreted as an
 expiration timestamp of 1688583600, i.e., July 05, 2023 at 19:00:00 GMT+0000, which is the timestamp
