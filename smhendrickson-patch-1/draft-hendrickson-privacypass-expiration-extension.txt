@@ -5,8 +5,8 @@
 Privacy Pass                                              S. Hendrickson
 Internet-Draft                                                    Google
 Intended status: Standards Track                              C. A. Wood
-Expires: 19 September 2024                              Cloudflare, Inc.
-                                                           18 March 2024
+Expires: 24 January 2025                                Cloudflare, Inc.
+                                                            23 July 2024
 
 
                 Privacy Pass Token Expiration Extension
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 September 2024.
+   This Internet-Draft will expire on 24 January 2025.
 
 Copyright Notice
 
@@ -126,9 +126,9 @@ Table of Contents
    struct {
       uint64 timestamp_precision;
       uint64 timestamp;
-   } ExpirationTimestmap;
+   } ExpirationTimestamp;
 
-   The ExpirationTimestmap fields are defined as follows:
+   The ExpirationTimestamp fields are defined as follows:
 
    *  "timestamp_precision" is an 8-octet integer, in network byte
       order, representing the granularity of the timestamp, i.e., the
@@ -147,7 +147,7 @@ Table of Contents
    struct {
       uint64 timestamp_precision = 3600;
       uint64 timestamp = 1688583600;
-   } ExpirationTimestmap;
+   } ExpirationTimestamp;
 
 4.  Privacy Considerations
 
@@ -244,9 +244,9 @@ Table of Contents
               Hendrickson, S. and C. A. Wood, "The PrivateToken HTTP
               Authentication Scheme Extensions Parameter", Work in
               Progress, Internet-Draft, draft-wood-privacypass-auth-
-              scheme-extensions-01, 25 November 2023,
+              scheme-extensions-02, 29 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-wood-
-              privacypass-auth-scheme-extensions-01>.
+              privacypass-auth-scheme-extensions-02>.
 
    [AUTH-SCHEME]
               Pauly, T., Valdez, S., and C. A. Wood, "The Privacy Pass
