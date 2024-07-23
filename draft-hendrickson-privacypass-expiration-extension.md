@@ -83,10 +83,10 @@ The value of this extension is an ExpirationTimestamp, defined as follows.
 struct {
    uint64 timestamp_precision;
    uint64 timestamp;
-} ExpirationTimestmap;
+} ExpirationTimestamp;
 ~~~
 
-The ExpirationTimestmap fields are defined as follows:
+The ExpirationTimestamp fields are defined as follows:
 
 - "timestamp_precision" is an 8-octet integer, in network byte order, representing the granularity of the timestamp,
   i.e., the target to which the timestamp is rounded for loss of precision.
@@ -102,7 +102,7 @@ rounded to the nearest hour (timestamp_precision = 3600).
 struct {
    uint64 timestamp_precision = 3600;
    uint64 timestamp = 1688583600;
-} ExpirationTimestmap;
+} ExpirationTimestamp;
 ~~~
 
 # Privacy Considerations {#privacy}
