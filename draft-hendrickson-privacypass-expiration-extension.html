@@ -11,24 +11,23 @@
        This document describes an extension for Privacy Pass that allows tokens
 to encode expiration information. 
     " name="description">
-<meta content="xml2rfc 3.20.0" name="generator">
+<meta content="xml2rfc 3.22.0" name="generator">
 <meta content="token" name="keyword">
 <meta content="extensions" name="keyword">
 <meta content="draft-hendrickson-privacypass-expiration-extension-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.20.0
-    Python 3.11.8
+  xml2rfc 3.22.0
+    Python 3.12.3
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.2
-    lxml 4.9.3
-    platformdirs 4.2.0
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
     pycountry 22.3.5
     PyYAML 6.0.1
-    requests 2.31.0
-    setuptools 68.2.2
-    six 1.16.0
+    requests 2.32.3
+    setuptools 69.5.1
     wcwidth 0.2.13
 -->
 <link href="draft-hendrickson-privacypass-expiration-extension.xml" rel="alternate" type="application/rfc+xml">
@@ -1028,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Privacy Pass Token Expiration Extension</td>
-<td class="right">March 2024</td>
+<td class="right">July 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Hendrickson &amp; Wood</td>
-<td class="center">Expires 14 September 2024</td>
+<td class="center">Expires 24 January 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1045,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-hendrickson-privacypass-expiration-extension-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-03-13" class="published">13 March 2024</time>
+<time datetime="2024-07-23" class="published">23 July 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-09-14">14 September 2024</time></dd>
+<dd class="expires"><time datetime="2025-01-24">24 January 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1104,7 +1103,7 @@ to encode expiration information.<a href="#section-abstract-1" class="pilcrow">�
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1220,10 +1219,10 @@ timestamp in each token to indicate the time window for which the token is valid
 struct {
    uint64 timestamp_precision;
    uint64 timestamp;
-} ExpirationTimestmap;
+} ExpirationTimestamp;
 </pre><a href="#section-3-4" class="pilcrow">¶</a>
 </div>
-<p id="section-3-5">The ExpirationTimestmap fields are defined as follows:<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-5">The ExpirationTimestamp fields are defined as follows:<a href="#section-3-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3-6.1">
           <p id="section-3-6.1.1">"timestamp_precision" is an 8-octet integer, in network byte order, representing the granularity of the timestamp,
@@ -1242,7 +1241,7 @@ rounded to the nearest hour (timestamp_precision = 3600).<a href="#section-3-7" 
 struct {
    uint64 timestamp_precision = 3600;
    uint64 timestamp = 1688583600;
-} ExpirationTimestmap;
+} ExpirationTimestamp;
 </pre><a href="#section-3-8" class="pilcrow">¶</a>
 </div>
 </section>
@@ -1330,6 +1329,7 @@ can be found in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-
       </ul>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-7">
       <h2 id="name-references">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -1346,7 +1346,7 @@ can be found in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-
 <dd class="break"></dd>
 <dt id="AUTH-EXTENSIONS">[AUTH-EXTENSIONS]</dt>
         <dd>
-<span class="refAuthor">Hendrickson, S.</span> and <span class="refAuthor">C. A. Wood</span>, <span class="refTitle">"The PrivateToken HTTP Authentication Scheme Extensions Parameter"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-wood-privacypass-auth-scheme-extensions-01</span>, <time datetime="2023-11-25" class="refDate">25 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-wood-privacypass-auth-scheme-extensions-01">https://datatracker.ietf.org/doc/html/draft-wood-privacypass-auth-scheme-extensions-01</a>&gt;</span>. </dd>
+<span class="refAuthor">Hendrickson, S.</span> and <span class="refAuthor">C. A. Wood</span>, <span class="refTitle">"The PrivateToken HTTP Authentication Scheme Extensions Parameter"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-wood-privacypass-auth-scheme-extensions-02</span>, <time datetime="2024-03-29" class="refDate">29 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-wood-privacypass-auth-scheme-extensions-02">https://datatracker.ietf.org/doc/html/draft-wood-privacypass-auth-scheme-extensions-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="AUTH-SCHEME">[AUTH-SCHEME]</dt>
         <dd>
@@ -1397,6 +1397,7 @@ can be found in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-
 </section>
 </div>
 </section>
+</div>
 <div id="acknowledgments">
 <section id="appendix-A">
       <h2 id="name-acknowledgments">
