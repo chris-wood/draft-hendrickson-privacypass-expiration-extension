@@ -53,8 +53,7 @@ the tokens, often referred to as public metadata. {{AUTH-EXTENSIONS}} describes
 an extension parameter to the basic PrivateToken HTTP authentication scheme {{AUTH-SCHEME}}
 for supplying this metadata alongside a token. {{EXTENDED-ISSUANCE}} describes
 variants of the basic Privacy Pass issuance protocols {{BASIC-ISSUANCE}} that
-support issuing tokens with public metadata. However, there are no existing
-extensions defined to make use of these protocol extensions.
+support issuing tokens with public metadata.
 
 This document describes an extension for Privacy Pass that allows tokens
 to encode expiration information. The use case and deployment considerations,
@@ -66,10 +65,11 @@ especially with respect to the resulting privacy impact, are also discussed.
 
 # Expiration Extension
 
-The expiration extension is an extension used to convey the expiration for an issued
-token. It is useful for Privacy Pass deployments that make use of cached tokens, i.e.,
-those that are not bound to a specific TokenChallenge redemption context, without having
-to frequently rotate issuing public keys.
+The expiration extension is used to convey the expiration for an issued token.
+It is useful for Privacy Pass deployments that make use of cached tokens, i.e.,
+those that are not bound to a specific TokenChallenge redemption context, when
+they want to limit token lifetime without having to frequently rotate issuing
+key pairs.
 
 For example, consider a Privacy Pass deployment wherein Clients use cached tokens that
 are valid for one hour. Clients could pre-fetch these tokens each hour and the Issuer
@@ -77,7 +77,8 @@ and Origin could rotate the verification key every hour to force expiration. Alt
 Clients could pre-fetch tokens for the entire day all at once, including an expiration
 timestamp in each token to indicate the time window for which the token is valid.
 
-The value of this extension is an ExpirationTimestamp, defined as follows.
+The ExtensionType (defined in {{AUTH-SCHEME}}) of this extension is `0x01`. The
+value of this extension is an ExpirationTimestamp, defined as follows.
 
 ~~~
 struct {
