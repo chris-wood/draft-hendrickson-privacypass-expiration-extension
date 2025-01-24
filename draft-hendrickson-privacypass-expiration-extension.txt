@@ -5,8 +5,8 @@
 Privacy Pass                                              S. Hendrickson
 Internet-Draft                                                    Google
 Intended status: Standards Track                              C. A. Wood
-Expires: 24 January 2025                                Cloudflare, Inc.
-                                                            23 July 2024
+Expires: 28 July 2025                                   Cloudflare, Inc.
+                                                         24 January 2025
 
 
                 Privacy Pass Token Expiration Extension
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 January 2025.
+   This Internet-Draft will expire on 28 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -88,8 +88,6 @@ Table of Contents
    this metadata alongside a token.  [EXTENDED-ISSUANCE] describes
    variants of the basic Privacy Pass issuance protocols
    [BASIC-ISSUANCE] that support issuing tokens with public metadata.
-   However, there are no existing extensions defined to make use of
-   these protocol extensions.
 
    This document describes an extension for Privacy Pass that allows
    tokens to encode expiration information.  The use case and deployment
@@ -106,11 +104,11 @@ Table of Contents
 
 3.  Expiration Extension
 
-   The expiration extension is an extension used to convey the
-   expiration for an issued token.  It is useful for Privacy Pass
-   deployments that make use of cached tokens, i.e., those that are not
-   bound to a specific TokenChallenge redemption context, without having
-   to frequently rotate issuing public keys.
+   The expiration extension is used to convey the expiration for an
+   issued token.  It is useful for Privacy Pass deployments that make
+   use of cached tokens, i.e., those that are not bound to a specific
+   TokenChallenge redemption context, when they want to limit token
+   lifetime without having to frequently rotate issuing key pairs.
 
    For example, consider a Privacy Pass deployment wherein Clients use
    cached tokens that are valid for one hour.  Clients could pre-fetch
@@ -120,8 +118,9 @@ Table of Contents
    including an expiration timestamp in each token to indicate the time
    window for which the token is valid.
 
-   The value of this extension is an ExpirationTimestamp, defined as
-   follows.
+   The ExtensionType (defined in [AUTH-SCHEME]) of this extension is
+   0x01.  The value of this extension is an ExpirationTimestamp, defined
+   as follows.
 
    struct {
       uint64 timestamp_precision;
@@ -292,9 +291,9 @@ Table of Contents
               Dev, B., Braithwaite, M., Sleevi, R., and P. Tabriz,
               "Where the Wild Warnings Are: Root Causes of Chrome HTTPS
               Certificate Errors", ACM, Proceedings of the 2017 ACM
-              SIGSAC Conference on Computer and Communications Security,
-              DOI 10.1145/3133956.3134007, October 2017,
-              <https://doi.org/10.1145/3133956.3134007>.
+              SIGSAC Conference on Computer and Communications
+              Security pp. 1407-1420, DOI 10.1145/3133956.3134007,
+              October 2017, <https://doi.org/10.1145/3133956.3134007>.
 
    [OHTTP]    "*** BROKEN REFERENCE ***".
 
